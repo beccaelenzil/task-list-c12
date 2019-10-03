@@ -189,3 +189,67 @@ Migrating to CreateTasks (20191003232959)
   ↳ bin/rails:9
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "due_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rail"], ["description", "learn rails"], ["due_date", "2020-01-01"], ["created_at", "2019-10-03 23:34:07.174924"], ["updated_at", "2019-10-03 23:34:07.174924"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "due_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "make dinner"], ["description", "mac n cheese"], ["due_date", "2020-01-01"], ["created_at", "2019-10-03 23:34:25.279209"], ["updated_at", "2019-10-03 23:34:25.279209"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+Started GET "/tasks/1" for ::1 at 2019-10-03 16:35:03 -0700
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/becca/.rbenv/versions/2.5.5/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 18ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tasks" for ::1 at 2019-10-03 16:35:05 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:3
+  Rendered tasks/index.html.erb within layouts/application (17.6ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 5.1ms)
+
+
+
+NoMethodError - undefined method `author' for #<Task:0x00007fc6c225fec8>:
+  app/views/tasks/index.html.erb:5:in `block in _app_views_tasks_index_html_erb__3774176786729327817_70245818687880'
+  app/views/tasks/index.html.erb:3:in `_app_views_tasks_index_html_erb__3774176786729327817_70245818687880'
+
+Started POST "/__better_errors/2a4c0dbd736d96e4/variables" for ::1 at 2019-10-03 16:35:05 -0700
+Started GET "/tasks" for ::1 at 2019-10-03 16:35:21 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:3
+  Rendered tasks/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 26ms (Views: 23.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks" for ::1 at 2019-10-03 16:35:55 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:3
+  Rendered tasks/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 23ms (Views: 19.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks/2/edit" for ::1 at 2019-10-03 16:35:57 -0700
+
+AbstractController::ActionNotFound - The action 'edit' could not be found for TasksController:
+
+Started POST "/__better_errors/5a0550cba3517698/variables" for ::1 at 2019-10-03 16:35:57 -0700
+Started GET "/tasks" for ::1 at 2019-10-03 16:35:59 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:3
+  Rendered tasks/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 42ms (Views: 38.1ms | ActiveRecord: 0.4ms)
+
+
