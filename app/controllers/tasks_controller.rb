@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(name: params[:task][:name], description: params[:task][:description], due_date: params[:task][:due_date], completion_date: nil) #instantiate a new task
+    @task = Task.new(task_params)#Task.new(name: params[:task][:name], description: params[:task][:description], due_date: params[:task][:due_date], completion_date: nil) #instantiate a new task
     if @task.save # save returns true if the database insert succeeds
       redirect_to task_path(@task) # go to the index so we can see the task in the list
       return
@@ -95,6 +95,10 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  private
 
+  def task_params
+    return params.require(:task).permit(:name, :description, :due_date, :completion_date) 
+  end
 
 end
