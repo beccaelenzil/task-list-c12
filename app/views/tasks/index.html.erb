@@ -3,11 +3,13 @@
 <ul>
   <% @tasks.each do |task|  %>
     <li>
-      <%= link_to task[:name], task_path(task), class: "name"  %> 
-      <br>
-      <%= link_to "edit", edit_task_path(task), class: "name"%>
-      <%= link_to "delete", task_path(task), method: :delete, class: "name" %>
+      <% if task.completion_date %>
+        <%= link_to task.name, task_path(task), class: "name", style: style='text-decoration:line-through'  %> 
+        <%= link_to "Mark Incomplete", mark_incomplete_path(task), class: 'incomplete', method: :patch %>
+      <% else %>
+        <%= link_to task.name, task_path(task), class: "name"  %> 
+        <%= link_to "Mark Complete", mark_complete_path(task), class: 'complete', method: :patch %>
+      <%end%>
     </li>
-    <br>
   <% end %>
 </ul> 
