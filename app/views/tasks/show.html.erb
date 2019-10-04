@@ -1,3 +1,7 @@
 <h1><%= @task[:name] %></h1>
 <h2><%= @task[:description] %></h2>
 <h3><%= @task[:due_date] %></h3>
+
+<ul>
+<li><%= link_to "Back to Task List", tasks_path %></li>
+</ul>

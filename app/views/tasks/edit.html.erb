@@ -1,7 +1,7 @@
 <%# in app/views/tasks/new.html.erb%>
 
-<%= form_with model: @task, class: 'create-task' do |f|%>
-  <p>Please provide the following information to save your task to our database:</p>
+<%= form_with model: @task, class: 'edit-task' do |f|%>
+  <p>Please use the following information to edit your task in the database:</p>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -11,7 +11,7 @@
   <%= f.label :due_date %>
   <%= f.text_field :due_date %>
 
-  <%= f.submit "Save Task", class: "task-button" %>
+  <%= f.submit "Update Task", class: "task-button" %>
 <% end %>
 
 <ul>
