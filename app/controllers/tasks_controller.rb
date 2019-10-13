@@ -23,9 +23,12 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)#Task.new(name: params[:task][:name], description: params[:task][:description], due_date: params[:task][:due_date], completion_date: nil) #instantiate a new task
     if @task.save # save returns true if the database insert succeeds
-      redirect_to task_path(@task) # go to the index so we can see the task in the list
+      flash[:success] = "Created New Task Successfully"
+      redirect_to tasks_path# go to the index so we can see the task in the list
       return
+      
     else # save failed :(
+      flash.now[:error] = "Couldn't save task"
       render :new # show the new task form view again
       return
     end
