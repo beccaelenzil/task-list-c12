@@ -18,4 +18,9 @@ Rails.application.routes.draw do
 
     patch '/tasks/:id/mark_incomplete', to: 'tasks#mark_incomplete', as: 'mark_incomplete'
     patch '/tasks/:id/mark_complete', to: 'tasks#mark_complete', as: 'mark_complete'
+
+    get "/login", to: "users#login_form", as: "login"
+    post "/login", to: "users#login"
+    post "/logout", to: "users#logout", as: "logout"
+    get "/users/current", to: "users#current", as: "current_user"
 end

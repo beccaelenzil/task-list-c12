@@ -13,7 +13,7 @@ class TasksController < ApplicationController
       redirect_to tasks_path
       flash[:error] = "Could not find task with id: #{params[:id]}"
       return
-    end
+    end 
   end
 
   def new
